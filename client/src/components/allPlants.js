@@ -22,14 +22,14 @@ class AllPlants extends Component {
         {!this.props.plants.length ? (
           <NoPlants />
         ) : (
-          <div className="plants-container">
-            <h2>Plants:</h2>
+            <div className="plants-container">
+              <h1>All Plants</h1>
             {this.props.plants.map(plant => (
               <PlantItem plant={plant} key={plant.id} />
             ))}
           </div>
         )}
-      </div>
+        </div>
     )
   }
 }
