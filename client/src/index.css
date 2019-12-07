@@ -1,13 +1,69 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+@font-face {
+  font-family: 'Playfair Display';
+  src: local('Playfair Display'), url(./fonts/PlayfairDisplay-Black.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Playfair Display BoldItalic';
+  src: local('Playfair Display BolidItalic'), url(./fonts/PlayfairDisplay-BoldItalic.ttf) format('truetype');
+}
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.plants-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+.plants-container h1 {
+  flex-basis: 100%;
+  font-family: 'Playfair Display';
+  color: #3e4827;
+  align-self: flex-end;
+}
+
+.item-container {
+  display: flex;
+  flex-flow: column wrap;
+  margin-top: 1vw;
+}
+
+.item-text {
+  display: flex;
+  font-family: 'Roboto';
+  align-content: baseline;
+  justify-content: space-between;
+}
+
+.item-text h3 {
+  margin: 0vw;
+  max-width: 65%;
+  height: auto;
+}
+
+.item-text a {
+  font-family: 'Playfair Display BoldItalic';
+  margin-top: 0vw;
+}
+
+.item-text a:hover {
+  color:  #3e4827;
+  font-family: 'Playfair Display'
+}
+
+.plant-image img {
+  max-width: 35vw;
+  height: auto;
+}
+

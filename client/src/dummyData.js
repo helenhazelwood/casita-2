@@ -3,7 +3,7 @@ const dummyPlants = [
     id: 1,
     name: 'Monstera Delciosa',
     description: 'Nicknamed the ”swiss cheese plant”, the Monstera deliciosa is famous for its quirky natural leaf holes. A vibrant green beauty, it can give any interior space instant jungle vibes.',
-    imageURL: 'https://cdn.shopify.com/s/files/1/0150/6262/products/the-sill_monstera-deliciosa_featured.jpg?v=1571848406',
+    imageURL: 'https://cdn.shopify.com/s/files/1/0150/6262/products/the-sill_monstera_variant_large_grant_blush_10e2616a-65d3-433c-bdca-87ac2d22eac3_1440x.jpg?v=1572014611',
     sunlight: 'medium-bright',
     size: 'large',
     petFriendly: false

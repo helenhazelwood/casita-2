@@ -5,6 +5,8 @@ import store from './store';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import './fonts/PlayfairDisplay-Black.ttf'
+import './fonts/PlayfairDisplay-BoldItalic.ttf'
 
 ReactDOM.render(
   <Provider store={store}>
