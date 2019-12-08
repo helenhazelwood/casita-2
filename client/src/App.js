@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import AllPlants from './components/allPlants'
+import Routes from './routes'
 
 class App extends Component {
   state = {
@@ -28,7 +29,7 @@ class App extends Component {
     return (
       <div className="App">
         <p className="App-intro">{this.state.data}</p>
-        <AllPlants />
+        <Routes />
       </div>
     );
   }

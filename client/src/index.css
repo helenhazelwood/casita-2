@@ -5,34 +5,50 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  cursor: default;
 }
 
 @font-face {
   font-family: 'Playfair Display';
-  src: local('Playfair Display'), url(./fonts/PlayfairDisplay-Black.ttf) format('truetype');
+  src: local('Playfair Display'),
+    url(./fonts/PlayfairDisplay-Black.ttf) format('truetype');
 }
 
 @font-face {
   font-family: 'Playfair Display BoldItalic';
-  src: local('Playfair Display BolidItalic'), url(./fonts/PlayfairDisplay-BoldItalic.ttf) format('truetype');
+  src: local('Playfair Display BolidItalic'),
+    url(./fonts/PlayfairDisplay-BoldItalic.ttf) format('truetype');
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
-.plants-container {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-evenly;
+a {
+  text-decoration: none;
+  cursor: default;
 }
-.plants-container h1 {
-  flex-basis: 100%;
+.home-container {
+  display: flex;
+  flex-flow: column wrap;
   font-family: 'Playfair Display';
   color: #3e4827;
-  align-self: flex-end;
 }
 
+.home-container a {
+  font-family: 'Playfair Display BoldItalic';
+  color: #3e4827;
+  font-style: normal;
+  font-size: 2vw;
+}
+
+.home-container a:hover{
+  font-family: 'Playfair Display'
+}
+
+.home-container h1 {
+  margin: .5vw;
+}
 .item-container {
   display: flex;
   flex-flow: column wrap;
@@ -58,12 +74,22 @@ code {
 }
 
 .item-text a:hover {
-  color:  #3e4827;
-  font-family: 'Playfair Display'
+  color: #3e4827;
+  font-family: 'Playfair Display';
 }
 
+.plants-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+.plants-container h1 {
+  flex-basis: 100%;
+  font-family: 'Playfair Display';
+  color: #3e4827;
+  align-self: flex-end;
+}
 .plant-image img {
   max-width: 35vw;
   height: auto;
 }
-
