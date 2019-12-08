@@ -16,7 +16,7 @@ class App extends Component {
   }
   // Fetches GET route from the Express server
   callBackendAPI = async () => {
-    const response = await fetch('/express_backend');
+    const response = await fetch('/api/express_test');
     const body = await response.json();
 
     if (response.status !== 200) {
