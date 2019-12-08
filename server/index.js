@@ -10,5 +10,11 @@ app.listen(port, () => {
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/api', require('./api'))
+app.use('/api', require('./api'));
 
+//ERROR HANDLING: Keep at end
+app.use(function(err, req, res, next) {
+  console.error(err);
+  console.error(err.stack);
+  res.status(err.status || 500).send(err.message || 'Internal server error');
+});
