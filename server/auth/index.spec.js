@@ -1,6 +1,7 @@
 const { expect } = require('chai');
 const request = require('supertest');
 const db = require('../db');
+const UserPlant = db.model('UserPlant')
 const User = db.model('user');
 const app = require('../index');
 
@@ -34,20 +35,22 @@ describe('Auth routes', () => {
   describe('/auth/login', () => {
     const alfiePassword = '123';
     const alfieEmail = 'alfie@email.com';
+    afterEach(async() => {
+      await UserPlant.sync({force: true})
+      await request(app).post('/auth/logout')
+    })
     it('login route lets a correct email and password login', async () => {
       const res = await request(app)
         .post('/auth/login')
         .send({ email: alfieEmail, password: '123' });
       expect(res.body.email).to.be.equal(alfieEmail);
     });
-  });//end describe login route
-  describe('/auth/me', () => {
-    xit('returns the currently logged in user', async () => {
-      const login = await request(app).post('/auth/login').send({email: 'alfie@email.com', password: '123'})
-
-      const res = await request(app).get('/auth/me')
-
-      expect(res.body.email).to.be.equal('alfie@email.com')
+    it(`eagerly loads the user's saved plants`, async () => {
+      await UserPlant.create({userId: 5, plantId: 3})
+     const res = await request(app)
+        .post('/auth/login')
+        .send({ email: alfieEmail, password: '123' });
+      expect(res.body.plants.length).to.be.equal(1)
     })
-  })
+  });//end describe login route
 });//end describe auth routes
