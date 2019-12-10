@@ -40,5 +40,14 @@ describe('Auth routes', () => {
         .send({ email: alfieEmail, password: '123' });
       expect(res.body.email).to.be.equal(alfieEmail);
     });
-  });
-});
+  });//end describe login route
+  describe('/auth/me', () => {
+    xit('returns the currently logged in user', async () => {
+      const login = await request(app).post('/auth/login').send({email: 'alfie@email.com', password: '123'})
+
+      const res = await request(app).get('/auth/me')
+
+      expect(res.body.email).to.be.equal('alfie@email.com')
+    })
+  })
+});//end describe auth routes

@@ -1,3 +1,6 @@
+import Axios from "axios"
+import history from '../history'
+
 //DUMMY DATA FOR FRONTEND BUILD
 const dummyUser = {name: 'Helen', email: 'helen@email.com', password: '123', isAdmin: true}
 
@@ -13,13 +16,42 @@ const gotUser = user => ({type: GOT_USER, user})
 const removedUser = () => ({type: REMOVED_USER})
 
 //THUNK CREATORS
-//thunk for testing frontend
-export const getUser = (email, password) => async dispatch => {
-  if (dummyUser.email === email && dummyUser.password === password) {
-    dispatch(gotUser(dummyUser))
+//Get a logged-in user
+export const me = () => async dispatch => {
+  try {
+const res = await Axios.get('/auth/me')
+dispatch(gotUser(res.data || defaultUser))
+  } catch (error) {
+console.error(error)
   }
 }
+//Login, signup, google oauth
+export const auth = (email, password, method) => async dispatch => {
+  let res
+  try {
+    res = await Axios.post(`/auth/${method}`, {email, password})
+  } catch (authError) {
+return dispatch(gotUser({error: authError}))
+  }
 
+  try {
+    console.log('USER LOGGED IN', res.data)
+    dispatch(gotUser(res.data))
+    history.push('/home')
+  } catch (dispatchOrHistoryErr) {
+    console.error(dispatchOrHistoryErr)
+  }
+}
+//logout
+export const logout = () => async dispatch => {
+  try {
+await Axios.post('/auth/logout')
+dispatch(removedUser())
+history.push('/home')
+  } catch (error) {
+console.error(error)
+  }
+}
 //REDUCER
 export default function(state = defaultUser, action){
   switch (action.type) {

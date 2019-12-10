@@ -10,3 +10,4 @@ const middleware = applyMiddleware(thunkMiddleware, createLogger({collapsed: tru
 const store = createStore(reducer, middleware)
 
 export default store
+export * from './user'

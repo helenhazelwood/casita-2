@@ -26,7 +26,7 @@ code {
 
 a {
   text-decoration: none;
-  cursor: default;
+  cursor: pointer;
 }
 .home-container {
   display: flex;
@@ -42,12 +42,12 @@ a {
   font-size: 2vw;
 }
 
-.home-container a:hover{
-  font-family: 'Playfair Display'
+.home-container a:hover {
+  font-family: 'Playfair Display';
 }
 
 .home-container h1 {
-  margin: .5vw;
+  margin: 0.5vw;
 }
 .item-container {
   display: flex;
@@ -78,10 +78,47 @@ a {
   font-family: 'Playfair Display';
 }
 
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-content: flex-end;
+  margin: 1vw;
+  border-bottom: 1px dotted;
+  border-color: white white #3e4827 white;
+}
+.navbar h1 {
+  margin: 0vw;
+  align-content: flex-end;
+  font-family: 'Playfair Display BoldItalic';
+  color: #3e4827;
+}
+
+.navbar h1:hover {
+  cursor: pointer;
+}
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
+nav a {
+  margin: 0.5vw;
+  font-family: 'Playfair Display BoldItalic';
+  text-decoration: none;
+  color: #3e4827;
+}
+
+nav a:hover {
+  font-family: 'Playfair Display';
+  color: #485232;
+  cursor: pointer;
+}
 .plants-container {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
+  color: #3e4827
 }
 .plants-container h1 {
   flex-basis: 100%;
