@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   cursor: default;
+  height: 100vh;
 }
 
 @font-face {
@@ -19,6 +20,12 @@ body {
   src: local('Playfair Display BolidItalic'),
     url(./fonts/PlayfairDisplay-BoldItalic.ttf) format('truetype');
 }
+
+@font-face {
+  font-family: 'Roboto';
+  src: local('Roboto'), url(./fonts/Roboto-Regular.ttf) format('truetype');
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -27,6 +34,109 @@ code {
 a {
   text-decoration: none;
   cursor: pointer;
+}
+
+button {
+  color: #3e4827;
+  padding: 1px 8px 2.5px;
+
+}
+#root {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%
+}
+
+.App {
+  display: flex;
+  flex-flow: column nowrap;
+  align-content: center;
+  height: 100%;
+  width: auto;
+}
+.auth-form {
+  display: flex;
+  margin-top: 3vw;
+  justify-content: space-around;
+  align-items: center;
+}
+.auth-form a {
+  align-self: center;
+}
+
+.auth-directive {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  font-family: "Playfair Display";
+  justify-self: flex-start;
+  flex-wrap: wrap;
+  margin-left: 2vw;
+  color: #3e4827
+}
+
+.auth-directive h1 {
+  margin: 0vw;
+}
+
+:focus {
+  outline: 0;
+}
+.form-container {
+  display: flex;
+  flex-basis: 50%;
+  background: #e7eedd;
+}
+
+form {
+  display: flex;
+  flex-flow: column wrap;
+  justify-items: left;
+  align-items: space-evenly;
+  width: 100%;
+  height: 100%;
+  margin: 1.5vw;
+}
+
+form div {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-content: stretch;
+  margin: .5vw;
+
+}
+
+form div label {
+  color: #3e4827;
+  font-family: 'Roboto';
+  font-size: 2.25vw;
+  align-self: flex-start;
+}
+
+form div button {
+ align-self: center;
+ width: 183px;
+ height: 35px;
+ background: #475f2465;
+ padding: 0px;
+ line-height: 2.5vw;
+ font-family: "Playfair Display BoldItalic";
+ font-size: 2vw;
+ border: 0px;
+ border-radius: 2px;
+}
+
+form div input {
+  max-height: 3vw;
+  height: 30px;
+  border: 1px solid #48523288;
+  border-radius: 2px;
+}
+
+input:focus {
+  border: 1px solid #485232;
+  outline: 0;
 }
 .home-container {
   display: flex;
@@ -118,7 +228,7 @@ nav a:hover {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
-  color: #3e4827
+  color: #3e4827;
 }
 .plants-container h1 {
   flex-basis: 100%;
