@@ -1,21 +1,23 @@
 const db = require('../server/db')
 const Axios = require('axios')
 const {User, Plant} = require('../server/db/models')
+const UserPlant = db.model('UserPlant')
 
 async function seed() {
-  await db.sync()
-  console.log('db synced!')
+await db.sync()
 
-  const users = await Promise.all([
-    User.create({email: 'gardener@email.com', password: '123'}), User.create({email: 'alfie@email.com', password: '123'}),
-    User.create({email: 'helen@email.com', password: '123'})
-  ]);
+const plant = await Plant.findByPk(22)
 
-  const plants = await Plant.findAll()
+await UserPlant.create({userId: 3, plantId: plant.id})
 
-  console.log(`seeded ${users.length} users`)
-  console.log(`seeded ${plants.length} plants`)
+const joinInstances = await UserPlant.findAll()
+
+console.log(`added ${joinInstances.length} userplants`)
+
+await db.close()
+console.log('db connection closed!')
 }
+
 
 async function runSeed() {
   console.log('seeding...')
@@ -32,7 +34,7 @@ async function runSeed() {
 }
 
 if(module === require.main) {
-  runSeed()
+  seed()
 }
 
 module.exports = seed

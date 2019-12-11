@@ -1,5 +1,6 @@
 //DUMMY DATA FOR FRONTEND BUILD
 import dummyPlants from '../dummyData'
+import Axios from 'axios'
 
 //DEFAULT STATE
 const defaultPlants = {}
@@ -10,8 +11,9 @@ const GOT_PLANTS = 'GOT_PLANTS'
 const gotPlants = plants => ({type: GOT_PLANTS, plants})
 
 //THUNK CREATORS
-export const getPlants = () => dispatch => {
-  const data = dummyPlants.dummyPlants
+export const getPlants = () => async dispatch => {
+  const {data} = await Axios.get('/api/plants')
+  
   dispatch(gotPlants(data))
 }
 

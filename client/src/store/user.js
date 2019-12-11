@@ -37,7 +37,7 @@ return dispatch(gotUser({error: authError}))
   try {
     console.log('USER LOGGED IN', res.data)
     dispatch(gotUser(res.data))
-    history.push('/home')
+    history.push('/garden')
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr)
   }

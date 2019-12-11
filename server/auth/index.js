@@ -36,13 +36,15 @@ router.post('/signup', async (req, res, next) => {
 });
 
 router.post('/logout', (req, res) => {
-  console.log('LOGGING OUT', req.passport)
+  console.log('LOGGING OUT', req.passport);
   req.logout();
   req.session.destroy();
   res.redirect('/');
 });
 
-router.get('/me', (req, res) => {
-  
-  res.send(req.user);
+router.get('/me', async (req, res) => {
+  const user = await User.findByPk(req.user.id, {
+    include: [{ all: true }],
+  });
+  res.send(user);
 });
