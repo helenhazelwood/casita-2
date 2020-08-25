@@ -10,6 +10,15 @@ async function seed() {
     User.create({email: 'gardener@email.com', password: '123'}), User.create({email: 'alfie@email.com', password: '123'}),
     User.create({email: 'helen@email.com', password: '123'})
   ]);
+  //this needs tinkering
+  const prods = await JSON.parse(Axios.get('https://www.thesill.com/products.json')).products
+
+  for(var i=0; i < prods.length; i++) {
+    var current_prod = prods[i]
+    if (current_prod.tags.indexOf('liveplant') > -1) {
+        console.log(current_prod.title)
+    }
+  }
 
   const plants = await Plant.findAll()
 
