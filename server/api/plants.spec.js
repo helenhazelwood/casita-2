@@ -30,14 +30,15 @@ describe('Plant routes', () => {
       expect(plantSearch.description).to.be.equal(testPlant.description);
       expect(res.body.name).to.be.equal(testPlant.name);
     });
-    // it('/:plantId/:userId route creates a new join instance', async() => {
-    //   const res = await request(app).post('/api/plants/2/3').expect(201)
+    it('/:plantId/:userId route creates a new join instance', async() => {
+        const plant = await Plant.create(testPlant)
+      const res = await request(app).post(`/api/plants/${plant.id}/3`).expect(201)
 
-    //   const joinSearch = await UserPlant.findOne({where: {
-    //     userId: 3, plantId: 2
-    //   }})
-    //   expect(joinSearch.userId).to.be.equal(3)
-    // })
+      const joinSearch = await UserPlant.findOne({where: {
+        userId: 3, plantId: plant.id
+      }})
+      expect(joinSearch.userId).to.be.equal(3)
+    })
   });//end describe post route
   describe('put routes', () => {
     let testPlant = {
