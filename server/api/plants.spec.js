@@ -17,32 +17,27 @@ describe('Plant routes', () => {
     afterEach(async () => {
       await Plant.destroy({ where: { description: testPlant.description } });
     });
-    afterEach(async () => {
-      await UserPlant.sync({force: true})
-    })
-    it('creates a new plant and an instance in the join table', async () => {
+
+    it('creates a new plant', async () => {
       const res = await request(app)
         .post('/api/plants')
-        .send({ plant: testPlant, userId: 5 })
+        .send({ plant: testPlant, userId: 2 })
         .expect(201);
       const plantSearch = await Plant.findOne({
         where: { name: testPlant.name },
       });
-      const joinSearch = await UserPlant.findOne({
-        where: { plantId: plantSearch.id },
-      });
-      expect(joinSearch.userId).to.be.equal(5);
+
       expect(plantSearch.description).to.be.equal(testPlant.description);
       expect(res.body.name).to.be.equal(testPlant.name);
     });
-    it('/:plantId/:userId route creates a new join instance', async() => {
-      const res = await request(app).post('/api/plants/2/3').expect(201)
+    // it('/:plantId/:userId route creates a new join instance', async() => {
+    //   const res = await request(app).post('/api/plants/2/3').expect(201)
 
-      const joinSearch = await UserPlant.findOne({where: {
-        userId: 3, plantId: 2
-      }})
-      expect(joinSearch.userId).to.be.equal(3)
-    })
+    //   const joinSearch = await UserPlant.findOne({where: {
+    //     userId: 3, plantId: 2
+    //   }})
+    //   expect(joinSearch.userId).to.be.equal(3)
+    // })
   });//end describe post route
   describe('put routes', () => {
     let testPlant = {

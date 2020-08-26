@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const User = require('../db/models/user');
+const Plant = require('../db/models/plant')
 
 module.exports = router;
 router.post('/login', async (req, res, next) => {
@@ -13,7 +14,7 @@ router.post('/login', async (req, res, next) => {
       res.status(401).send('Wrong username and/or password');
     } else {
       const user = await User.findByPk(candidate.id, {
-        include: [{ all: true }],
+        include: Plant,
       });
       req.login(user, err => (err ? next(err) : res.json(user)));
     }
@@ -43,6 +44,6 @@ router.post('/logout', (req, res) => {
 });
 
 router.get('/me', (req, res) => {
-  
+
   res.send(req.user);
 });
